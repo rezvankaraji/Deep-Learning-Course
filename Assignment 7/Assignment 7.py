@@ -4,8 +4,6 @@ MAX_ITER = 10000
 
 # n×m gridworld
 class GridWorld:
-    # value function for the entire gridworld
-    value = 0
     # origin point of the grid_world
     ORIGIN = (0, 0)
 
@@ -76,7 +74,7 @@ class Agent:
     def __init__(self, env, starting_state=None, possible_moves = None):
         self.env = env
         self.current_state = self.env.get_origin()
-        self.possible_moves = [(0, 1), (0, -1), (1, 0), (-1, 0)] # one cell to right, left, up, down
+        self.possible_moves = [(0, 1), (0, -1), (1, 0), (-1, 0)] # one cell to right, left, down, up
 
         if starting_state:
             self.current_state = starting_state
