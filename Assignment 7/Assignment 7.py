@@ -1,11 +1,15 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 # n×m gridworld
 class GridWorld:
     # value function for the entire gridworld
     value = 0
 
-    def __init__(self, n, m, terminal={}, inaccessible={}, default_reward = -1):
-        self.n = n
-        self.m = m
+    def __init__(self, size, terminal={}, inaccessible={}, default_reward = -1):
+        self.n = size[0]
+        self.m = size[1]
         self.terminal = terminal
         self.inaccessible = inaccessible
         self.default_reward = default_reward
@@ -34,3 +38,24 @@ class Agent:
     # value iteration
     def value_iter(self):
         pass
+
+
+
+
+if __name__ == '__main__':
+
+    # Table 1
+    size = (4, 4)
+    inaccessible_states = [(1, 1), (1, 2), (2, 3)] # color=Gray
+    terminal_states = {(0, 3): 0, (3, 3): 0} # color=Blue, Blue
+
+    gw_1 = GridWorld(size, terminal_states, inaccessible_states)
+
+
+    # Table 2
+    size = (5, 6)
+    inaccessible_states = [(0, 1), (1, 1), (2, 1), (2, 3), (2, 4), (2, 5), ((3, 1))] # color=Gray
+    terminal_states = {(0, 5): 10, (3, 3): -10} # color=Green, Blue
+
+    gw_2 = GridWorld(size, terminal_states, inaccessible_states)
+
