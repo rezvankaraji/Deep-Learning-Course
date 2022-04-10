@@ -83,7 +83,7 @@ class Agent:
             self.possible_moves = possible_moves
 
     # value iteration
-    def value_iter(self, gamma=0.9, theta=1e-400):
+    def value_iter(self, gamma=1, theta=1e-400):
         V = np.zeros(self.env.size) # to save the values of each state
         A = np.empty(self.env.size,dtype=str) # to save the action of each state
 
@@ -96,7 +96,7 @@ class Agent:
             for state in self.env.get_states():
 
                 if self.env.is_terminal(state):
-                    V[state] = 0
+                    V[state] = self.env.get_reward(state)
                     A[state] = 'T'
 
                 elif not self.env.is_accessible(state):
@@ -109,7 +109,7 @@ class Agent:
                     possible_actions = self.env.possible_actions(state, self.possible_moves)
                     for action in possible_actions:
                         next_state = possible_actions[action]
-                        reward = self.env.get_reward(next_state)
+                        reward = self.env.get_reward(state)
                         new_v.append(reward + gamma * V[next_state])
                         new_a.append(action)
 
