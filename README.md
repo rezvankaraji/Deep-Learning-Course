@@ -1,1 +1,1 @@
-# Deep-Learning-Course
+# Deep Learning and Reinforcment Course, MATH6205
